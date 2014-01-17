@@ -4,7 +4,7 @@
 <div class="nav-collapse">
     <ul class="nav">
         <li><a href="/">Home</a></li>
-        <li><a href="/predict">Predict</a></li>
+        <li><a href="/predict">Current Projection</a></li>
         <li class="active"><a href="/board">Leaderboard</a></li>
         <!--<li><a href="/job">Job</a></li>-->
         <li><a href="/about">About</a></li>
@@ -29,23 +29,23 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Angellist Quality</th>
-                            <th>Angellist Follower</th>
-                            <th>Twitter Follower</th>
-                            <th>Bitly Click</th>
+                            <th>Startup</th>
+                            <th>Success Probability</th>
+                            <th>Current Status</th>
+                            <th>Market</th>
+                            <th>Predicted Valuation</th>
+                            <th>Location</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for record in ranked_list %}
+                        {% for i in inds %}
                             <tr>
-                                <td><img src="{{record[1]['data'][5]}}" width="45" height="45" /></td>
-                                <td><a href="/startup/{{record[0]}}">{{record[1]['data'][0]}}</a></td>
-                                <td>{{record[1]['data'][1]}}</td>
-                                <td>{{record[1]['data'][2]}}</td>
-                                <td>{{record[1]['data'][3]}}</td>
-                                <td>{{record[1]['data'][4]}}</td>
+                                <td> {{ name[i] }} </td>
+                                <td> {{ score[i] }} </td>
+                                <td> {{ status[i] }} </td>
+                                <td> {{ market[i] }} </td>
+                                <td> {{ valuation[i] }} </td>
+                                <td> {{ location[i] }} </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -64,24 +64,15 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Angellist Quality</th>
-                            <th>Angellist Follower</th>
-                            <th>Twitter Follower</th>
-                            <th>Bitly Click</th>
+                            <th>Startup</th>
+                            <th>Success Probability</th>
+                            <th>Current Status</th>
+                            <th>Google Trends Volume</th>
+                            <th>Twitter Followers</th>
+                            <th>Facebook Likes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for record in trend_list %}
-                            <tr>
-                                <td><img src="{{ record[1]['data'][5]}}" width="45" height="45" /></td>
-                                <td><a href="/startup/{{record[0]}}">{{ record[1]['data'][0] }}</a></td>
-                                <td>{{ record[1]['data'][1] }}</td>
-                                <td>{{ record[1]['data'][2] }}</td>
-                                <td>{{ record[1]['data'][3] }}</td>
-                                <td>{{ record[1]['data'][4] }}</td>
-                            </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
             </div>

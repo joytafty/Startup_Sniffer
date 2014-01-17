@@ -1,10 +1,22 @@
 {% extends "base.html" %}
 
+{% block navbar %}
+  <div class="nav-collapse">
+    <ul class="nav">
+      <li class="active"><a href="/">Welcome</a></li>
+      <li><a href="/predict">Current Projection</a></li>
+      <li><a href="/board">Leader board</a></li>
+      <!--<li><a href="/job">Job</a></li>-->
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div><!--/.nav-collapse -->
+{% endblock %}
+
 {% block extra %}
 <div id="carousel" class="carousel slide" rel="carousel">
     <div class="carousel-inner">
         <div class="active item">
-            <h1 class="alt">DATA SCIENCE FOR VENTURE CAPITAL</h1>
+            <h1 class="alt">INVEST SMARTER with DATA SCIENCE</h1>
             <img src="/static/img/city.jpg"/>
         </div>
     </div>
@@ -13,10 +25,58 @@
 
 {% block content %}
 
-<div class="hero-unit" style="text-align:center;">
-    <h1>Interested?</h1>
-    <a class="btn btn-large btn-success" href="/predict">Get Started!</a>
+<div class="hero-unit">
+    <form id="inputForm" style="text-align:center;" method="post" action="{{ url_for('analyze') }}">
+      <div class="control-group">
+        <h2>See Startups </h2>
+        <p>company name like Heroku, Airbnb, RethinkDB etc.</p>
+        <div class="controls">
+          <div class="input-append">
+            
+          <input type="text" autocomplete="off" placeholder="Type Company ..." id="crunch-id" name="crunch-id"
+              data-provide="typeahead" data-items="4"
+              data-source=''>
+            <a href="/predict" type="" class="btn btn-success" onclick="formSubmit()" >
+                <i class="icon-search icon-white"></i>
+            </a>
+
+            <select class="selectpicker" title="market sector" data-width="28px" id="choices">
+              <option>web, mobile, software, messaging</option>
+              <option>real estate</option>
+              <option>enterprise</option>
+              <option>fashion</option>
+              <option>travel</option>
+              <option>advertising, PR</option>
+              <option>nonprofile</option>
+              <option>ecommerce</option>
+              <option>search, analytics</option>
+              <option>social</option>
+              <option>photo, video, music</option>
+              <option>education</option>
+              <option>health</option>
+              <option>finance</option>
+              <option>hardware</option>
+              <option>game_video</option>
+              <option>hospitality</option>
+              <option>local</option>
+              <option>legal</option>
+            </select>
+
+            <a href="/predict" type="" class="btn btn-success" onclick="formSubmit()" >
+                Submit
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </form>
+
 </div>
 
+<!-- <div class="hero-unit" style="text-align:center;">
+    <h1>See the forecast ? </h1>
+    <a class="btn btn-large btn-success" href="/predict">Check it out!</a>
+</div>
+ -->
 {% endblock %}
 

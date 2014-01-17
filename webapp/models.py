@@ -2,10 +2,10 @@
 Model class for database tabels
 """
 
-class CBCompany(object):
+class ProbAcquire(object):
     pass
 
-class CBPeople(object):
+class StartupSeedFund(object):
     pass
 
 class CBCompanyPeople(object):
